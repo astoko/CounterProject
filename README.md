@@ -4,7 +4,7 @@
 
 # Project Counter Overflow
 
-A brief description of what this project does and who it's for
+Silly willy spamming for silly willy people from [okayxairen Community](https://discord.com/invite/cTyWY42Ycb)
 
 
 ## Demo
