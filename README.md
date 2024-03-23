@@ -25,6 +25,10 @@ Install the following dependencies:
   pip install requests
 ```
 
+## Contributors
+
+#### @jased (le funny dood), @crhbo (the whathow owner) , @urufusan (he cewl) , and everyone running this code for some reason XD
+
 ## FAQ
 
 #### Is this fastest way possible to complete this project?
@@ -39,5 +43,3 @@ No, the owner of the site has said that its okay, From the owner: "break this :3
 ## Licenses Used
 
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-
-
