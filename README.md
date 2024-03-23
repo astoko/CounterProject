@@ -29,7 +29,7 @@ Install the following dependencies:
 
 #### @jased (le funny dood)  
 #### @crhbo (the whathow owner)  
-#### @urufusan (he cewl)  
+#### @urufusan (he Kewl)  
 
 and everyone running this code for some reason XD
 
