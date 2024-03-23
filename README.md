@@ -14,15 +14,22 @@ Its to make this counter above go to 999,999,999 and see what happens.. maybe we
 
 ## Demo
 
-![Screencast-from-2024-03-23-19-35-30](https://github.com/Kokolekion/CounterProject/assets/65463088/b7b7f94b-7a6d-4465-8cdd-97992e36d82b)
+![The script running on macOS](demo.gif)
 
 ## Installation
+A Linux/macOS environment is preferred. You can use WSL if you're running Windows
 
 Install the following dependencies: 
-**Requests**
+**[Bun](https://bun.sh)**
 
 ```bash
-  pip install requests
+  curl -fsSL https://bun.sh/install | bash
+```
+Node.js would be used for this, but Bun is faster.
+
+# Running
+```bash
+  ./run.sh
 ```
 
 ## Contributors
@@ -37,12 +44,17 @@ and everyone running this code for some reason XD
 
 #### Is this fastest way possible to complete this project?
 
-Most probably not but i sure hope someday we get better and faster ways of doing this! XD
+Most probably not but ~~i sure hope someday we get better and faster ways of doing this!~~ the new js version is faster than the python one, but could still be faster XD
+
+#### Why is there both `run.sh` and `spam.js`?
+Running `bun spam.js` will work, but bun seems to constantly memory leak, hogging gigabytes of memory. `run.sh` waits 60 seconds and 
 
 #### Is this safe, Will i get in trouble of sending so many requests?
 
 Yes, the owner of the site has said that its okay, From the owner: "break this :3"
 
+#### Is the code AI generated?
+Yes.
 
 ## Licenses Used
 
