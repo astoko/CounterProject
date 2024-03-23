@@ -9,8 +9,7 @@ Silly willy spamming for silly willy people from [okayxairen Community](https://
 
 ## Demo
 
-![Screencast from 2024-03-23 19-35-30](https://github.com/Kokolekion/CounterProject/assets/65463088/efcd5f67-ce3e-4dee-bb59-dc2c756bc127)
-
+![Screencast-from-2024-03-23-19-35-30](https://github.com/Kokolekion/CounterProject/assets/65463088/b7b7f94b-7a6d-4465-8cdd-97992e36d82b)
 
 ## Installation
 
