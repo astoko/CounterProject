@@ -5,11 +5,12 @@
 # Project Counter Overflow
 
 Silly willy spamming for silly willy people from [okayxairen Community](https://discord.com/invite/cTyWY42Ycb)
-Goal is one in life..
 
 [WHATHOW Website](https://whathow.neocities.org/) is the website and the counter is in it.
 
-Make this counter above go to 999,999,999 and see what happens.. maybe we get choco and who doesn't like choco!
+The goal in life is a very simple one, its not about money.. men.. or anything in between!
+
+Its to make this counter above go to 999,999,999 and see what happens.. maybe we get choco and who doesn't like choco!
 
 ## Demo
 
