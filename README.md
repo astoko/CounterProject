@@ -41,7 +41,7 @@ Most probably not but i sure hope someday we get better and faster ways of doing
 
 #### Is this safe, Will i get in trouble of sending so many requests?
 
-No, the owner of the site has said that its okay, From the owner: "break this :3"
+Yes, the owner of the site has said that its okay, From the owner: "break this :3"
 
 
 ## Licenses Used
