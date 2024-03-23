@@ -9,7 +9,8 @@ A brief description of what this project does and who it's for
 
 ## Demo
 
-![Logo](https://i.ibb.co/LvrLH9m/Screencast-from-2024-03-23-19-35-30.gif)
+![Screencast from 2024-03-23 19-35-30](https://github.com/Kokolekion/CounterProject/assets/65463088/efcd5f67-ce3e-4dee-bb59-dc2c756bc127)
+
 
 ## Installation
 
