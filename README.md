@@ -7,7 +7,7 @@
 Silly willy spamming for silly willy people from [okayxairen Community](https://discord.com/invite/cTyWY42Ycb)
 Goal is one in life..
 
-![Counter](https://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e&init=1711217274343&init_freecounterstat=0&library=library_counters&coef=0.75&type=193&lenght=9&pv=0)
+![Le counter](https://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e&init=1711217274343&init_freecounterstat=0&library=library_counters&coef=0.75&type=193&lenght=9&pv=0)
 
 Make this counter above go to 999,999,999 and see what happens.. maybe we get choco and who doesn't like choco!
 
