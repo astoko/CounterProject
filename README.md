@@ -27,7 +27,11 @@ Install the following dependencies:
 
 ## Contributors
 
-#### @jased (le funny dood), @crhbo (the whathow owner) , @urufusan (he cewl) , and everyone running this code for some reason XD
+#### @jased (le funny dood)  
+#### @crhbo (the whathow owner)  
+#### @urufusan (he cewl)  
+
+and everyone running this code for some reason XD
 
 ## FAQ
 
