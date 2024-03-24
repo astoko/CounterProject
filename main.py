@@ -24,7 +24,7 @@ def setup():
     global debug
     global count
     global url
-
+    
     if isfile(settings_file):
         config = ConfigParser()
         config.read(settings_file)
@@ -43,8 +43,11 @@ def setup():
         config = ConfigParser()
         config['GLOBAL'] = {'COUNT': 500,
                             'DEBUG': False}
-        with open(ininame, 'w') as configfile:
+        with open(settings_file, 'w') as configfile:
             config.write(configfile)
+
+        count = 500
+        debug = False
         memcheck()
 
 def memcheck():
