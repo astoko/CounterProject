@@ -1,6 +1,8 @@
 
 ![Logo](https://github.com/Kokolekion/CounterProject/assets/65463088/809f1cec-fc3e-4fdc-9e2a-1b24375147c1)
 
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![VIM](https://img.shields.io/badge/written_with-vim-green?logo=vim)](https://vim.org)
 
 # Project Counter Overflow
 
@@ -17,7 +19,7 @@ Its to make this counter above go to 999,999,999 and see what happens.. maybe we
 $ git clone https://github.com/astoko/CounterProject.git
 $ cd CounterProject
 $ ulimit -n 8192
-$ ./run.sh
+$ python main.py
 ```
 
 ulimit -n will need to be above ~7000 for this to work.
@@ -25,7 +27,6 @@ It uses ~20gb of ram, but each individual process is only about 25mb.
 
 ## Dependencies
  - Python
- - Linux/MacOS (WSL also works)
 
 ## Contributors
 
@@ -39,18 +40,11 @@ and everyone running this code for some reason XD
 
 #### Is this fastest way possible to complete this project?
 
-Most probably not but ~~i sure hope someday we get better and faster ways of doing this!~~ the new python version is faster than the js one, but could still be faster XD
+Most probably not but ~~i sure hope someday we get better and faster ways of doing this!~~ the new python version is faster than the js one, but could still be faster X3
 
-#### Why is there both `run.sh` and `main.py`?
-`main.py` does not deal with SIGINT, and will therefore leave orphans running.
-
-#### Is this safe, Will i get in trouble of sending so many requests?
-
-Yes, the owner of the site has said that its okay, From the owner: "break this :3"
+#### Will I get in trouble for spamming requests?
+No, the owner of the site has said that its okay.\
+"break this :3" - @crhbo (the owner)
 
 #### Is the code AI generated?
-Only run.sh.
-
-## Licenses Used
-
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+No.
