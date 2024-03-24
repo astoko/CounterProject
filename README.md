@@ -12,25 +12,20 @@ The goal in life is a very simple one, its not about money.. men.. or anything i
 
 Its to make this counter above go to 999,999,999 and see what happens.. maybe we get choco and who doesn't like choco!
 
-## Demo
-
-![The script running on macOS](demo.gif)
-
-## Installation
-A Linux/macOS environment is preferred. You can use WSL if you're running Windows
-
-Install the following dependencies: 
-**[Bun](https://bun.sh)**
-
+## Installation + Running
 ```bash
-  curl -fsSL https://bun.sh/install | bash
+$ git clone https://github.com/astoko/CounterProject.git
+$ cd CounterProject
+$ ulimit -n 8192
+$ ./run.sh
 ```
-Node.js would be used for this, but Bun is faster.
 
-# Running
-```bash
-  ./run.sh
-```
+ulimit -n will need to be above ~7000 for this to work.
+It uses ~20gb of ram, but each individual process is only about 20-30mb of usage.
+
+## Dependencies
+ - Python
+ - Linux/MacOS (WSL also works)
 
 ## Contributors
 
@@ -44,17 +39,17 @@ and everyone running this code for some reason XD
 
 #### Is this fastest way possible to complete this project?
 
-Most probably not but ~~i sure hope someday we get better and faster ways of doing this!~~ the new js version is faster than the python one, but could still be faster XD
+Most probably not but ~~i sure hope someday we get better and faster ways of doing this!~~ the new python version is faster than the js one, but could still be faster XD
 
-#### Why is there both `run.sh` and `spam.js`?
-Running `bun spam.js` will work, but bun seems to constantly memory leak, hogging gigabytes of memory. `run.sh` waits 60 seconds and 
+#### Why is there both `run.sh` and `main.py`?
+`main.py` does not deal with SIGINT, and will therefore leave orphans running.
 
 #### Is this safe, Will i get in trouble of sending so many requests?
 
 Yes, the owner of the site has said that its okay, From the owner: "break this :3"
 
 #### Is the code AI generated?
-Yes.
+Only run.sh.
 
 ## Licenses Used
 
