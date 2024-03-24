@@ -2,17 +2,15 @@ from multiprocessing import Process, Value, Array, cpu_count, Lock
 from statistics import fmean, StatisticsError
 from configparser import ConfigParser
 from psutil import virtual_memory
+from colorama import Fore, Style
 from requests import Session
 from random import randint
 from os.path import isfile
 import configparser
 import time
-import sys
-import os
 
-# ini / config file.
+# ini / config file + requests session
 settings_file = 'settings.ini'
-
 session = Session()
 
 # keep the url config in main.py so referrer and counter can be defined together
@@ -25,30 +23,25 @@ url, session.headers.update = "http://counter11.freecounterstat.com/private/coun
 
 # Setup / Added for more automated process.
 def setup():
-    global debug
     global count
     config = ConfigParser()
-    
+
     if isfile(settings_file):
         config.read(settings_file)
 
-        print(f"Reading GLOBAL/COUNT")
-        print(f"Reading GLOBAL/DEBUG")
-
+        print(f"Reading COUNT")
         count = int(config.get('GLOBAL','COUNT'))
-        debug = config.get('GLOBAL','DEBUG')
 
         print(f"Count has been set to {count}.")
-        print(f"Debug has been set to {debug}.")
  
         memcheck()
+
     else:
         # Creates config if it does not exist
         print("Config file not found, creating")
         
         # Sets defaults
-        config['GLOBAL'] = {'COUNT': 500,
-                            'DEBUG': False}
+        config['GLOBAL'] = {'COUNT': 500}
 
         # Writes to file
         with open(settings_file, 'w') as configfile:
@@ -56,17 +49,16 @@ def setup():
 
         # Sets variables in program
         count = 500
-        debug = False
 
         memcheck()
 
 def memcheck():
-    mem = virtual_memory()
-    # Average usage per process is ~8.55MB, subtracts 1GB from available ram to avoid swapping too much
-    if (((mem.available - (10 ** 9)) / 8555000) < count):
-        print("Warning: Memory too low")
-        print("Set a lower count")
-        exit("")
+    memory = virtual_memory().available
+    # Average usage per process is ~8.3MB, subtracts 1GB from available ram to avoid swapping too much
+    max_count = (memory - (10 ** 9)) / 8300000
+    if (max_count < count):
+        # throws error
+        raise ResourceWarning(f"{Fore.RED}Warning: Memory too low for selected count. Set a lower count in {Fore.BLUE}settings.ini{Fore.RED}.\nWe recommend a count below {Fore.GREEN}{(max_count - 10):.0f}{Fore.RED} given the amount of available memory in your system.{Style.RESET_ALL}")
 
 def process(counter, fails, sysfails, avg_time, child, lock):
     while True:
@@ -121,10 +113,12 @@ def main():
     while True:
         # printing status, '\r' is to update newest line
         print((f"| {(time.time() - main_start):.2f} seconds elapsed"),
-              (f"| {counter.value} succeeded"),
-              (f"| {fails.value} failed"),
-              (f"| {sysfails.value} errors"),
-              (f"| average ping: {fmean(avg_time[:4]):.3f} |"), end='\r')
+              (f"| {Fore.GREEN}{counter.value} succeeded{Style.RESET_ALL}"),
+              (f"| {Fore.MAGENTA}{fails.value} failed{Style.RESET_ALL}"),
+              (f"| {Fore.RED}{sysfails.value} errors{Style.RESET_ALL}"),
+              (f"| average ping: {fmean(avg_time[:4]):.3f}"),
+              (f"| {Fore.GREEN}~{(counter.value / (time.time() - main_start) * 60):.1f} hits per minute{Style.RESET_ALL}"),
+              (f" |"), end='\r')
 
         time.sleep(0.08)
 
@@ -136,9 +130,11 @@ if (__name__ == "__main__"):
         # killing children
         for child in children:
             child.terminate()
-        print("you killed it :(")
-    except Exception as e:
-        # if someone has an issue and debug isn't on it's helpful to know that it crashed
+        print(f"{Fore.MAGENTA}you killed it :({Style.RESET_ALL}")
+    except ResourceWarning as e:
         print(e)
-        print("it died :(")
+        None
+    except Exception as e:
+        print(e)
+        print(f"{Fore.RED}it died :({Style.RESET_ALL}")
         None
