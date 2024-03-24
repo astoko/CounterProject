@@ -14,8 +14,12 @@ import os
 settings_file = 'settings.ini'
 
 session = Session()
+
+# keep the url config in main.py so referrer and counter can be defined together
+
 # uncomment for whathow (main counter)
-url, session.headers.update = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e&init=1711160585473", ({'referer': "https://whathow.neocities.org/"})
+url, session.headers.update = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e", ({'referer': "https://whathow.neocities.org/"})
+
 # uncomment for jared site
 # url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/"})
 
@@ -23,10 +27,9 @@ url, session.headers.update = "http://counter11.freecounterstat.com/private/coun
 def setup():
     global debug
     global count
-    global url
+    config = configParser
     
     if isfile(settings_file):
-        config = ConfigParser()
         config.read(settings_file)
 
         print(f"Reading GLOBAL/COUNT")
@@ -40,36 +43,30 @@ def setup():
  
         memcheck()
     else:
-        config = ConfigParser()
+        # Creates config if it does not exist
+        print("Config file not found, creating")
+        
+        # Sets defaults
         config['GLOBAL'] = {'COUNT': 500,
                             'DEBUG': False}
+
+        # Writes to file
         with open(settings_file, 'w') as configfile:
             config.write(configfile)
 
+        # Sets variables in program
         count = 500
         debug = False
+
         memcheck()
 
 def memcheck():
     mem = virtual_memory()
-    if (((mem.available - (10 ** 9)) / 8555000) < count):
+    # Average usage per process is ~8.55MB, subtracts 2GB from available ram to avoid swapping too much
+    if (((mem.available - (20 ** 9)) / 8555000) < count):
         print("Warning: Memory too low")
         print("Set a lower count")
         exit("")
-        
-
-# This seems uneccesary as it's in config
-# def debugcheck():
-#     global count
-#     global debug
-#     if debug:
-#         print(f"WARNING, DEBUG SET TO TRUE!")
-#         print(f"THIS WILL RESULT IN A LOT OF LOGS!!")
-#         x = query_yes_no("DO YOU WISH TO TURN IT OFF?","no")
-#         if x:
-#             debug = True
-#         else:
-#             debug = False
 
 def process(counter, fails, sysfails, avg_time, child, lock):
     while True:
