@@ -1,20 +1,17 @@
 from multiprocessing import Process, Value, Array, cpu_count, Lock
 from statistics import fmean, StatisticsError
+from configparser import ConfigParser
+from psutil import virtual_memory
 from requests import Session
 from random import randint
+from os.path import isfile
 import configparser
-import psutil
 import time
 import sys
 import os
 
-# Memory Threshold / Dont change unless you know what you are doing.
-THRESHOLD = 8000 * 1024 * 1024  # 8GB / Memory
-
 # ini / config file.
-ininame = 'settings.ini'
-
-# count = 3000
+settings_file = 'settings.ini'
 
 session = Session()
 # uncomment for whathow (main counter)
@@ -24,42 +21,39 @@ url, session.headers.update = "http://counter11.freecounterstat.com/private/coun
 
 # Setup / Added for more automated process.
 def setup():
-    global count
     global debug
-    print(f"Checking Settings if present...")
-    file = os.path.isfile(ininame)
-    if file:
-        config = configparser.ConfigParser()
-        config.read(ininame)
-        print(f"File found, Setting Count..")
-        print(" ")
+    global count
+    global url
+
+    if isfile(settings_file):
+        config = ConfigParser()
+        config.read(settings_file)
+
         print(f"Reading GLOBAL/COUNT")
-        count = int(config.get('GLOBAL','COUNT'))
         print(f"Reading GLOBAL/DEBUG")
+
+        count = int(config.get('GLOBAL','COUNT'))
         debug = config.get('GLOBAL','DEBUG')
-        print(" ")
-        print(f"COUNT: {count} has been set")
-        print(f"DEBUG: {debug} has been set")
-        print(" ")
+
+        print(f"Count has been set to {count}.")
+        print(f"Debug has been set to {debug}.")
+ 
         memcheck()
     else:
-        config = configparser.ConfigParser()
-        config['GLOBAL'] = {'COUNT': count,
-                            'DEBUG': debug}
+        config = ConfigParser()
+        config['GLOBAL'] = {'COUNT': 500,
+                            'DEBUG': False}
         with open(ininame, 'w') as configfile:
             config.write(configfile)
         memcheck()
 
 def memcheck():
-    mem = psutil.virtual_memory()
-    if mem.available <= THRESHOLD and count >= 500:
-        print(f"WARNING, Memory IS TOO LOW!")
-        print(f"THIS WILL RESULT IN A LOT OF LAG!!")
-        x = query_yes_no("DO YOU WISH TO CONTINUE?","no")
-        if x:
-            None
-        else:
-            quit()
+    mem = virtual_memory()
+    if (((mem.available - (10 ** 9)) / 8555000) < count):
+        print("Warning: Memory too low")
+        print("Set a lower count")
+        exit("")
+        
 
 # This seems uneccesary as it's in config
 # def debugcheck():
