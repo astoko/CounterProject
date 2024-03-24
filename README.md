@@ -27,6 +27,7 @@ It uses ~20gb of ram, but each individual process is only about 25mb.
 
 ## Dependencies
  - Python
+ - Colorama
 
 ## Contributors
 
