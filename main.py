@@ -137,6 +137,9 @@ if (__name__ == "__main__"):
     try:
         main()
     except (KeyboardInterrupt, SystemExit):
+        # killing children
+        for child in children:
+            child.terminate()
         print("you killed it :(")
     except Exception as e:
         # if someone has an issue and debug isn't on it's helpful to know that it crashed
