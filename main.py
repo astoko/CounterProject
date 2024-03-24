@@ -27,7 +27,7 @@ url, session.headers.update = "http://counter11.freecounterstat.com/private/coun
 def setup():
     global debug
     global count
-    config = configParser
+    config = ConfigParser()
     
     if isfile(settings_file):
         config.read(settings_file)
@@ -62,8 +62,8 @@ def setup():
 
 def memcheck():
     mem = virtual_memory()
-    # Average usage per process is ~8.55MB, subtracts 2GB from available ram to avoid swapping too much
-    if (((mem.available - (20 ** 9)) / 8555000) < count):
+    # Average usage per process is ~8.55MB, subtracts 1GB from available ram to avoid swapping too much
+    if (((mem.available - (10 ** 9)) / 8555000) < count):
         print("Warning: Memory too low")
         print("Set a lower count")
         exit("")
@@ -116,7 +116,7 @@ def main():
         print((f"{(i / (count - 1) * 100):.2f}% of processes started."), end='\r')
     
     # workaround so the previous printing doesn't get overwritten 
-    print("100% of processes started.")
+    print("100.00% of processes started.")
     print("Ctrl+C to end")
     while True:
         # printing status, '\r' is to update newest line
