@@ -21,7 +21,7 @@ $ ./run.sh
 ```
 
 ulimit -n will need to be above ~7000 for this to work.
-It uses ~20gb of ram, but each individual process is only about 20-30mb of usage.
+It uses ~20gb of ram, but each individual process is only about 25mb.
 
 ## Dependencies
  - Python

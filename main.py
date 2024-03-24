@@ -4,9 +4,9 @@ from requests import Session
 from random import randint
 import time
 
-# url = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e&init=1711160585473"
-url = "http://counter11.optistats.ovh/private/freecounterstat.php?c=pec7c8rlblcyry81uy93wbyaqpp2jjbn"
+url = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e&init=1711160585473"
 session = Session()
+count = 3000
 
 def process(counter, fails, avg_time, child, lock):
     while True:
@@ -38,7 +38,7 @@ def main():
     children = []
     main_start = time.time()  
     
-    for i in range(3000):
+    for i in range(count):
         children.append(Process(target=process, args=(counter, fails, avg_time, url, lock)))
         children[i].start()
     
