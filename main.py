@@ -17,7 +17,8 @@ THRESHOLD = 8000 * 1024 * 1024  # 8GB / Memory
 # Request URL / Already Set to the counter.
 url = "https://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e&init=1711160585473" # whathow
 
-# ini file / Config file.
+# ini file / 
+# Config file.
 ininame = 'settings.ini'
 
 # url = "https://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61" # jared site
