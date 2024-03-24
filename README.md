@@ -27,6 +27,11 @@ It uses ~20gb of ram, but each individual process is only about 25mb.
  - Python
  - Linux/MacOS (WSL also works)
 
+## Needed to be installed in PIP
+ - psutil ( for hardware checking )
+ - requests ( for requesting the website )
+ 
+
 ## Contributors
 
 #### @jased (le funny dood)  
