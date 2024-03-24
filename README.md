@@ -43,7 +43,7 @@ and everyone running this code for some reason XD
 Most probably not but ~~i sure hope someday we get better and faster ways of doing this!~~ the new python version is faster than the js one, but could still be faster X3
 
 #### Will I get in trouble for spamming requests?
-No, the owner of the site has said that its okay.\
+No, the owner of the site has said that it is okay.\
 "break this :3" - @crhbo (the owner)
 
 #### Is the code AI generated?
