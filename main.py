@@ -14,6 +14,9 @@ THRESHOLD = 8000 * 1024 * 1024  # 8GB / Memory
 # ini / config file.
 ininame = 'settings.ini'
 
+# count = 3000
+
+session = Session()
 # uncomment for whathow (main counter)
 url, session.headers.update = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e&init=1711160585473", ({'referer': "https://whathow.neocities.org/"})
 # uncomment for jared site
@@ -39,7 +42,6 @@ def setup():
         print(f"DEBUG: {debug} has been set")
         print(" ")
         memcheck()
-        debugcheck()
     else:
         config = configparser.ConfigParser()
         config['GLOBAL'] = {'COUNT': count,
@@ -47,7 +49,6 @@ def setup():
         with open(ininame, 'w') as configfile:
             config.write(configfile)
         memcheck()
-        debugcheck()
 
 def memcheck():
     mem = psutil.virtual_memory()
@@ -135,6 +136,7 @@ def main():
 
 if (__name__ == "__main__"):
     try:
+        setup()
         main()
     except (KeyboardInterrupt, SystemExit):
         # killing children
