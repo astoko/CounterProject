@@ -4,8 +4,10 @@ from requests import Session
 from random import randint
 import time
 
-url = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e&init=1711160585473"
+url = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e&init=1711160585473" # whathow
+# url = "https://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61" # jared site
 session = Session()
+session.headers.update({'referer': "https://jared.nekoweb.org/"})
 count = 3000
 
 def process(counter, fails, avg_time, child, lock):
@@ -14,6 +16,9 @@ def process(counter, fails, avg_time, child, lock):
             start = time.time()
             response = session.head(url)
             rtime = time.time() - start
+            status=response.status_code
+            response.close()
+
             if (response.status_code == 200):
                 with lock:
                     counter.value += 1
