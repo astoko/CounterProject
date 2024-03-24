@@ -58,7 +58,10 @@ def main():
     for i in range(count):
         children.append(Process(target=process, args=(counter, fails, sysfails, avg_time, url, lock)))
         children[i].start()
+        print((f"{(i / (count - 1) * 100):.2f}% of processes started."), end='\r')
     
+    # workaround so the previous printing doesn't get overwritten 
+    print("100% of processes started.")
     print("Ctrl+C to end")
     while True:
         # printing status, '\r' is to update newest line
@@ -66,7 +69,7 @@ def main():
               (f"| {counter.value} succeeded"),
               (f"| {fails.value} failed"),
               (f"| {sysfails.value} errors"),
-              (f"| average ping: {fmean(avg_time[:49]):.3f} |"), end='\r')
+              (f"| average ping: {fmean(avg_time[:4]):.3f} |"), end='\r')
 
         time.sleep(0.08)
 
