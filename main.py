@@ -62,7 +62,8 @@ def setup():
             url, session.headers.update = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e", ({'referer': "https://whathow.neocities.org/"})
         case 1:
             mode = "Jared"
-            url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/"})
+            print("this one,,, uhh,,, doesn't work,,, 3:")
+            url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/", 'sec-fetch-site': "cross-site"})
         case _:
             raise ResourceWarning(f"{Fore.RED}Error: Invalid mode set. Set a valid mode in {Fore.BLUE}settings.ini{Fore.RED}.\nList of valid modes can be found in {Fore.GREEN}README.md{Fore.RED}.{Style.RESET_ALL}")
     
