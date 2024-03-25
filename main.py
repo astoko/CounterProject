@@ -13,24 +13,25 @@ import time
 settings_file = 'settings.ini'
 session = Session()
 
-# keep the url config in main.py so referrer and counter can be defined together
-
-# uncomment for whathow (main counter)
-url, session.headers.update = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e", ({'referer': "https://whathow.neocities.org/"})
-
-# uncomment for jared site
-# url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/"})
-
-# Setup / Added for more automated process.
+# Handles config file and setup of variables
 def setup():
     global count
+    global url
     config = ConfigParser()
 
     if isfile(settings_file):
         config.read(settings_file)
 
-        print(f"Reading COUNT")
-        count = int(config.get('GLOBAL','COUNT'))
+        try:
+            print("Reading COUNT")
+            count = int(config.get('GLOBAL','COUNT'))
+        except ValueError:
+            raise ResourceWarning(f"{Fore.RED}Error: Invalid count set. Set a valid count in {Fore.BLUE}settings.ini{Fore.RED}.\nCount must be an {Fore.GREEN}integer{Style.RESET_ALL}.")
+        try:
+            print("Reading MODE")
+            mode = int(config.get('GLOBAL', 'MODE'))
+        except ValueError:
+            raise ResourceWarning(f"{Fore.RED}Error: Invalid mode set. Set a valid mode in {Fore.BLUE}settings.ini{Fore.RED}.\nMode must be an {Fore.GREEN}integer{Style.RESET_ALL}.")
 
         print(f"Count has been set to {count}.")
  
@@ -41,7 +42,8 @@ def setup():
         print("Config file not found, creating")
         
         # Sets defaults
-        config['GLOBAL'] = {'COUNT': 500}
+        config['GLOBAL'] = {'COUNT': 500,
+                            'MODE': 0}
 
         # Writes to file
         with open(settings_file, 'w') as configfile:
@@ -49,8 +51,23 @@ def setup():
 
         # Sets variables in program
         count = 500
+        mode = 0
 
         memcheck()
+
+    # check validity of mode + modify vars according to mode
+    match mode:
+        case 0:
+            mode = "WhatHow"
+            url, session.headers.update = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e", ({'referer': "https://whathow.neocities.org/"})
+        case 1:
+            mode = "Jared"
+            url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/"})
+        case _:
+            raise ResourceWarning(f"{Fore.RED}Error: Invalid mode set. Set a valid mode in {Fore.BLUE}settings.ini{Fore.RED}.\nList of valid modes can be found in {Fore.GREEN}README.md{Fore.RED}.{Style.RESET_ALL}")
+    
+    print(f"Mode set to {Fore.CYAN}{mode}{Style.RESET_ALL}.")
+            
 
 def memcheck():
     memory = virtual_memory().available

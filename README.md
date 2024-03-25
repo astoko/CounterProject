@@ -29,6 +29,10 @@ It uses ~20gb of ram, but each individual process is only about 25mb.
  - Python
  - Colorama
 
+## Valid Modes
+ - 0 (WhatHow, default, pings [WhatHow](https://whathow.neocities.org) counter)
+ - 1 (Jared, pings the [Jared](https://jared.nekoweb.org) counter instead)
+
 ## Contributors
 
 #### @jased (le funny dood)  
