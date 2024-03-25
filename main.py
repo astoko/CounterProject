@@ -59,10 +59,12 @@ def setup():
     match mode:
         case 0:
             mode = "WhatHow"
+
             url, session.headers.update = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e", ({'referer': "https://whathow.neocities.org/"})
         case 1:
             mode = "Jared"
-            print("this one,,, uhh,,, doesn't work,,, 3:")
+            raise ResourceWarning(f"this mode,,, uhh,,, {Fore.RED}doesn't work{Style.RESET_ALL},,, 3:")
+
             url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/", 'sec-fetch-site': "cross-site"})
         case _:
             raise ResourceWarning(f"{Fore.RED}Error: Invalid mode set. Set a valid mode in {Fore.BLUE}settings.ini{Fore.RED}.\nList of valid modes can be found in {Fore.GREEN}README.md{Fore.RED}.{Style.RESET_ALL}")
@@ -101,6 +103,9 @@ def process(counter, fails, sysfails, avg_time, child, lock):
                     avg_time[randint(0, 49)] = rtime
                 None
         # if exception, increment sysfails and print error
+        except KeyboardInterrupt:
+            pass
+            None
         except Exception as e:
             with lock:
                 print(e)
@@ -115,16 +120,17 @@ def main():
     avg_time = Array('f', [1] * 50)
     lock = Lock()
     # array of processes
+    global children
     children = []
     # elapsed time timer
     main_start = time.time()  
 
-    # create [count] processes
+    # create [count] processes 
     for i in range(count):
         children.append(Process(target=process, args=(counter, fails, sysfails, avg_time, url, lock)))
         children[i].start()
         print((f"{(i / (count - 1) * 100):.2f}% of processes started."), end='\r')
-    
+        
     # workaround so the previous printing doesn't get overwritten 
     print("100.00% of processes started.")
     print("Ctrl+C to end")
@@ -136,7 +142,7 @@ def main():
               (f"| {Fore.RED}{sysfails.value} errors{Style.RESET_ALL}"),
               (f"| average ping: {fmean(avg_time[:4]):.3f}"),
               (f"| {Fore.GREEN}~{(counter.value / (time.time() - main_start) * 60):.1f} hits per minute{Style.RESET_ALL}"),
-              (f" |"), end='\r')
+              (f"|"), end='\r')
 
         time.sleep(0.08)
 
@@ -148,11 +154,12 @@ if (__name__ == "__main__"):
         # killing children
         for child in children:
             child.terminate()
-        print(f"{Fore.MAGENTA}you killed it :({Style.RESET_ALL}")
+        print(f"\n{Fore.MAGENTA}you killed it :({Style.RESET_ALL}")
+        exit()
     except ResourceWarning as e:
         print(e)
         None
     except Exception as e:
         print(e)
-        print(f"{Fore.RED}it died :({Style.RESET_ALL}")
+        print(f"\n{Fore.RED}it died :({Style.RESET_ALL}")
         None
