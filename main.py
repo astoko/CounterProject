@@ -63,7 +63,7 @@ def setup():
             url, session.headers.update = "http://counter11.freecounterstat.com/private/counter.php?c=pdz4dufhlf9qlk4krksnw7twxbhlez2e", ({'referer': "https://whathow.neocities.org/"})
         case 1:
             mode = "Jared"
-            raise ResourceWarning(f"this mode,,, uhh,,, {Fore.RED}doesn't work{Style.RESET_ALL},,, 3:")
+            # raise ResourceWarning(f"this mode,,, uhh,,, {Fore.RED}doesn't work{Style.RESET_ALL},,, 3:")
 
             url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/", 'sec-fetch-site': "cross-site", 'origin': "https://jared.nekoweb.org/"})
         case _:
