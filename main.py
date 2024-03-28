@@ -65,7 +65,7 @@ def setup():
             mode = "Jared"
             raise ResourceWarning(f"this mode,,, uhh,,, {Fore.RED}doesn't work{Style.RESET_ALL},,, 3:")
 
-            url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/", 'sec-fetch-site': "cross-site"})
+            url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/", 'sec-fetch-site': "cross-site", 'origin': "https://jared.nekoweb.org/"})
         case _:
             raise ResourceWarning(f"{Fore.RED}Error: Invalid mode set. Set a valid mode in {Fore.BLUE}settings.ini{Fore.RED}.\nList of valid modes can be found in {Fore.GREEN}README.md{Fore.RED}.{Style.RESET_ALL}")
     
