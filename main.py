@@ -1,3 +1,4 @@
+#!/bin/env python
 from multiprocessing import Process, Value, Array, cpu_count, Lock
 from statistics import fmean, StatisticsError
 from configparser import ConfigParser
