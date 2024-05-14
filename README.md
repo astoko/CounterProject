@@ -32,6 +32,7 @@ It uses ~20gb of ram, but each individual process is only about 25mb.
 ## Valid Modes
  - 0 (WhatHow, default, pings [WhatHow](https://whathow.neocities.org) counter)
  - 1 (Jared, pings the [Jared](https://jared.nekoweb.org) counter instead (doesn't work atm))
+ - 2 (Americuh, default, pings [Americuh](https://theamericanmustanghorse.neocities.org/) counter)
 
 ## Contributors
 
