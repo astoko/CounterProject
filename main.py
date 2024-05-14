@@ -67,6 +67,11 @@ def setup():
             # raise ResourceWarning(f"this mode,,, uhh,,, {Fore.RED}doesn't work{Style.RESET_ALL},,, 3:")
 
             url, session.headers.update = "http://www.cutercounter.com/hits.php?id=hexpacno&nd=6&style=61", ({'referer': "https://jared.nekoweb.org/", 'sec-fetch-site': "cross-site", 'origin': "https://jared.nekoweb.org/"})
+        case 2:
+            mode = "Americuh"
+            # raise ResourceWarning(f"this mode,,, uhh,,, {Fore.RED}doesn't work{Style.RESET_ALL},,, 3:")
+
+            url, session.headers.update = "https://www.free-website-hit-counter.com/c.php?d=9&id=166907&s=288", ({'referer': "https://theamericanmustanghorse.neocities.org/", 'sec-fetch-site': "cross-site", 'origin': "https://theamericanmustanghorse.neocities.org/"})
         case _:
             raise ResourceWarning(f"{Fore.RED}Error: Invalid mode set. Set a valid mode in {Fore.BLUE}settings.ini{Fore.RED}.\nList of valid modes can be found in {Fore.GREEN}README.md{Fore.RED}.{Style.RESET_ALL}")
     
